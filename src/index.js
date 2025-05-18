@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-job.start();
+// job.start();
 app.use(express.json());
 app.use(cors());
 

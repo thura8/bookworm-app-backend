@@ -24,7 +24,7 @@ router.post("/", protectRoute, async (req, res) => {
       user: req.user._id,
     });
 
-    await new Book.save();
+    await newBook.save();
 
     res.status(201).json(newBook);
   } catch (error) {
