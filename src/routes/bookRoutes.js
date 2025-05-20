@@ -37,7 +37,7 @@ router.post("/", protectRoute, async (req, res) => {
 router.get("/", protectRoute, async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 5;
+    const limit = parseInt(req.query.limit) || 2;
 
     const skip = (page - 1) * limit;
 
@@ -66,7 +66,7 @@ router.delete("/:id", protectRoute, async (req, res) => {
     if (!book) return res.status(404).json({ message: "Book not found" });
 
     //check if user is the creator of the book
-    if (book.user.toString() !== req.user._id)
+    if (book.user.toString() !== req.user._id.toString())
       return res.status(401).json({ message: "Unauthorized" });
 
     // delete image from cloudinary
